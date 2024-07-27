@@ -1,0 +1,76 @@
+# IPL Winning Team Prediction
+
+## Overview
+This project aims to predict the winning team of an Indian Premier League (IPL) match using machine learning techniques. The model is trained on historical IPL match data and considers various features such as team composition, player performance, and match conditions.
+
+## Table of Contents
+- [Overview](#overview)
+- [Dataset](#dataset)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Model](#model)
+- [Results](#results)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Dataset
+The dataset used for this project consists of historical IPL match data, including details such as:
+- Match date
+- Teams playing
+- Venue
+- Player statistics
+- Match outcome
+
+You can download the dataset from [this link](#).
+
+## Installation
+To run this project locally, follow these steps:
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/ipl-winning-team-prediction.git
+    cd ipl-winning-team-prediction
+    ```
+
+2. Create a virtual environment and activate it:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. Install the required dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+To use the model for predicting the winner of a match, follow these steps:
+
+1. Ensure your dataset is in the `data` directory.
+2. Run the data preprocessing script:
+    ```bash
+    python preprocess_data.py
+    ```
+3. Train the model:
+    ```bash
+    python train_model.py
+    ```
+4. Make predictions:
+    ```bash
+    python predict.py --team1 "Team A" --team2 "Team B" --date "YYYY-MM-DD"
+    ```
+
+## Model
+The machine learning model used in this project is based on a Random Forest classifier. The model is trained on various features extracted from the dataset, including team performance, player statistics, and match conditions.
+
+## Results
+After training, the model achieves an accuracy of approximately XX%. The model's performance can be improved by tuning hyperparameters and incorporating additional features.
+
+## Contributing
+Contributions are welcome! Please follow these steps to contribute:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature-branch`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-branch`
+5. Submit a pull request.
