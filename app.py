@@ -2,14 +2,9 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-teams = ['Sunrisers Hyderabad',
-         'Mumbai Indians',
-         'Royal Challengers Bangalore',
-         'Kolkata Knight Riders',
-         'Kings XI Punjab',
-         'Chennai Super Kings',
-         'Rajasthan Royals',
-         'Delhi Capitals']
+teams = ['Sunrisers Hyderabad', 'Mumbai Indians', 'Royal Challengers Bangalore', 
+         'Kolkata Knight Riders', 'Kings XI Punjab', 'Chennai Super Kings', 
+         'Rajasthan Royals', 'Delhi Capitals']
 
 cities = ['Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
           'Chandigarh', 'Jaipur', 'Chennai', 'Cape Town', 'Port Elizabeth',
@@ -21,7 +16,7 @@ cities = ['Hyderabad', 'Bangalore', 'Mumbai', 'Indore', 'Kolkata', 'Delhi',
 pipe = pickle.load(open('pipe.pkl', 'rb'))
 st.title('IPL Win Predictor')
 
-col1, col2 = st.beta_columns(2)
+col1, col2 = st.columns(2)
 
 with col1:
     batting_team = st.selectbox('Select the batting team', sorted(teams))
@@ -32,7 +27,7 @@ selected_city = st.selectbox('Select host city', sorted(cities))
 
 target = st.number_input('Target')
 
-col3, col4, col5 = st.beta_columns(3)
+col3, col4, col5 = st.columns(3)
 
 with col3:
     score = st.number_input('Score')
@@ -48,10 +43,12 @@ if st.button('Predict Probability'):
     crr = score / overs
     rrr = (runs_left * 6) / balls_left
 
-    input_df = pd.DataFrame({'batting_team': [batting_team], 'bowling_team': [bowling_team], 'city': [selected_city], 'runs_left': [runs_left], 'balls_left': [balls_left], 'wickets': [wickets], 'total_runs_x': [target], 'crr': [crr], 'rrr': [rrr]})
+    input_df = pd.DataFrame({'batting_team': [batting_team], 'bowling_team': [bowling_team], 
+                             'city': [selected_city], 'runs_left': [runs_left], 'balls_left': [balls_left], 
+                             'wickets': [wickets], 'total_runs_x': [target], 'crr': [crr], 'rrr': [rrr]})
 
     result = pipe.predict_proba(input_df)
     loss = result[0][0]
     win = result[0][1]
-    st.header(batting_team + "- " + str(round(win * 100)) + "%")
-    st.header(bowling_team + "- " + str(round(loss * 100)) + "%")
+    st.header(f"{batting_team} - {win * 100:.2f}%")
+    st.header(f"{bowling_team} - {loss * 100:.2f}%")
