@@ -74,3 +74,4 @@ Contributions are welcome! Please follow these steps to contribute:
 3. Make your changes and commit them: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin feature-branch`
 5. Submit a pull request.
+to go live : https://ipl-winning-team-prediction-urzafsjkw3cbwhhykdedjg.streamlit.app/?embed_options=light_theme,show_toolbar,show_colored_line,show_padding,disable_scrolling,show_footer,dark_theme
